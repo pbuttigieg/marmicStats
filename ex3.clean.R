@@ -3,7 +3,13 @@
 ############
 # Make sure to write the path to the folder where bioenv-2 is. 
 # You can use tab to auto complete and check if the path is correct.
-bioenv3 <- read.csv("bioenv-3.csv",header=T,row.names=1)
+# You can also use the setwd() function to move to the directory where
+# bioenv3 is.
+bioenv3 <- read.csv(
+  "bioenv-3.csv",
+  header = T,
+  row.names = 1
+  )
 
 # inspect the table 
 head(bioenv3)
@@ -12,17 +18,34 @@ head(bioenv3)
 a.mean <- mean(bioenv3$a)
 a.sd <- sd(bioenv3$a)
 
-# compute the t statistic and the p-value 
-t.stat <- (a.mean - 10 )/(a.sd/sqrt(length(bioenv3$a)))
-t.stat
-pt(t.stat, df=24,lower.tail=F )
+# manually compute the t statistic and the p-value 
+t.stat <- (a.mean - 10 ) / (a.sd / sqrt(length(bioenv3$a)))
+
+# use the probability function to calculate the area under the curve
+# from our t statistic value to the end of the lower tail of a
+# t distribution with 24 degrees of freedom
+pt(
+  t.stat,         # our t statistic
+  df = 24,        # the degrees of freedom in the t distribution pt() should calculate
+  lower.tail = F  # tells pt() to find the area under the curve from our t stat to the
+                  # lower tail of the distribution
+  )
 
 # visualize the test
-plot(seq(-4,4,by=0.1),dt(seq(-4,4,by=0.1),df=24),type="l")
-abline(v=t.stat)
+plot(
+  seq(-4, 4 , by = 0.1),              # use a sequence of numbers from -4 to 4 in steps of 0.1 as the x-axis
+  dt(seq(-4, 4, by = 0.1), df = 24),  # use a density plot of the t distribution with 24 degrees of freedom as the y-axis 
+  type = "l"                          # make this a line plot
+  )
+  
+abline(v = t.stat) # draw a vertical (v) line on the plot at the value of our calculated t statistic
 
-# do the test using a function from R 
-t.test(bioenv3$a,mu=10,alternative="greater")
+# do the test using a existing function from R 
+t.test(
+  bioenv3$a,                # here's our data variable
+  mu = 10,                  # the mean to test against is defined as 10
+  alternative = "greater"   # the alternative hypothesis is that the empirical mean is greater than the stated mean
+  )
 
 ############
 #1.2)
