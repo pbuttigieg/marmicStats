@@ -2,6 +2,9 @@
 #Practical class 1
 #----------------------------------
 
+# remember to use "?" frequently to read about each function
+# you use!
+
 #----------#
 # 1)
 #----------#
@@ -127,7 +130,7 @@ myNorm.53.100.zscore <- (myNorm.53.100 - mean(myNorm.53.100))/sd(myNorm.53.100)
 myNorm.510.100.zscore <- (myNorm.510.100 - mean(myNorm.510.100))/sd(myNorm.510.100)
 
 # ... or by using a built in function calculate z-scores 
-# using the scale function.
+# using the scale() function.
 scale(myNorm.510.100)
 scale(myNorm.53.100)
 
@@ -139,6 +142,8 @@ scale(myNorm.53.100)
 # You can use tab to auto complete and check if the path is correct.
 # You can also use the setwd() function to move to the directory where
 # bioenv3 is.
+
+bioenv1 <- read.csv("~/Dropbox/Doctorado/CoursesAndWorkshops/MarMic_Statistics/tables/bioenv-1.csv",header=T,sep="\t")
 
 bioenv1 <- read.csv(
   "bioenv-1.csv",
