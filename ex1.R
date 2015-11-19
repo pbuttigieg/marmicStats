@@ -156,7 +156,12 @@ bioenv1 <- read.csv(
 # but R understands URLs too and can fetch data accordingly.
 # if you want to use a file path instead (e.g. if you have the file
 # on your computer and don't want to / can't download it again)
-# just replace the URL with the file path.
+# just replace the URL with the file path. The file can be anywhere
+# as long as you give the full path. If you are working in the same
+# directory the file is in (check this with getwd()), then you can
+# just give the file name. To change your working directory,
+# use setwd() - this can be a bit more convenient, but isn't needed
+# if you give the full path.
 
 # Inspect the first 20 rows of the table using head()
 head(bioenv1, 20)
@@ -174,8 +179,38 @@ bioenv1[1:20, ] # for a table-like structure such as a data frame or
 # Note: as.numeric over the factor data, gives the codes of the factor levels, 
 # so it should first be converted to character, and then to numeric.
 
-bioenv1 <- bioenv1[bioenv1$a!="no data",]
+# We set a little trap in this data import - while most of the data is 
+# numeric, there is one entry that is a string of characters:
+# "no data". This messes R up: it now assumes that you do not have
+# numeric data in that column:
+
+class(bioenv1$a) # this reports that R understands the data in this
+                 # column as categorical or 'factor' data.
+
+# notice that we used the "$" rather than slicing with [ ,"a"]
+# both are equivalent when dealing with data.frames, and select
+# a named column and all rows.
+
+class(bioenv1$b) # the other columns are understood as having 
+                 # integer values.
+
+# let's delete the row with missing data...
+# we do this by replacing bioenv1 with a subset of itself
+# containing all rows where column a does not match
+# ("!=") the string "no data"
+
+bioenv1 <- bioenv1[bioenv1$a != "no data", ]
+
 class(bioenv1$a)
+# the row is gone, but class() reveals that R doesn't automatically
+# switch the class of the "a" vector (i.e. the column, remember that
+# dataframes are just vectors stuck together as rows or columns)
+# to "integer" or "numeric", so we do it ourselves.
+# This may seem troublesome, but keep in mind you'd take a similar 
+# set of actions in Excel and other software to be sure your 
+# data is being processed as you'd expect it to be processed.
+
+# we use as.numeric() to 
 bioenv1$a <- as.numeric(as.character(bioenv1$a))
 
 #----------#
