@@ -140,8 +140,6 @@ scale(myNorm.53.100)
 # You can also use the setwd() function to move to the directory where
 # bioenv3 is.
 
-bioenv1 <- read.csv("~/Dropbox/Doctorado/CoursesAndWorkshops/MarMic_Statistics/tables/bioenv-1.csv",header=T,sep="\t")
-
 bioenv1 <- read.csv(
   "bioenv-1.csv",
   header=T,
