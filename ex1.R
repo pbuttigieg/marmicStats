@@ -94,22 +94,40 @@ range(myNorm.01.100) # range
 #3)
 #----------#
 
-myNorm.53.100 <- rnorm(100, 5, 3)
-myNorm.310.100 <- rnorm(100, 5, 10)
 
-# visualize the differences between the two.
+
+# Create some differnt normal distributions for comparison.
+# Set the seed again to be sure of reproducibility
+set.seed(10)
+
+myNorm.53.100 <- rnorm(100, 5, 3)
+myNorm.510.100 <- rnorm(100, 5, 10)
+
+# visualize the differences between the two using
+# R's histogram function...
 hist(myNorm.510.100)
 hist(myNorm.53.100)
+
+# we can change the plotting parameters with par() to
+# create multiple panels with the mfrow argument.
+par(mfrow = c(1,2)) # have one row and two columns for
+                    # plotting
+
+hist(myNorm.510.100)
+hist(myNorm.53.100)
+
+# pay attention to the bins used by the histograms.
 
 #----------#
 #4) 
 #----------# 
 
-# "manual" calculation of z-scores
+# We can calculate the z-scores of each vector ourselves....
 myNorm.53.100.zscore <- (myNorm.53.100 - mean(myNorm.53.100))/sd(myNorm.53.100)
 myNorm.510.100.zscore <- (myNorm.510.100 - mean(myNorm.510.100))/sd(myNorm.510.100)
 
-# calculate z-scores using the scale function.
+# ... or by using a built in function calculate z-scores 
+# using the scale function.
 scale(myNorm.510.100)
 scale(myNorm.53.100)
 
