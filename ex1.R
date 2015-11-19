@@ -138,25 +138,37 @@ scale(myNorm.53.100)
 #5.1) 
 #----------# 
 
-# Make sure to write the path to the folder where bioenv-1 is. 
-# You can use tab to auto complete and check if the path is correct.
-# You can also use the setwd() function to move to the directory where
-# bioenv3 is.
+# First we use read.csv() to import the table in bioenv-1.csv
+
 
 bioenv1 <- read.csv(
   "https://raw.githubusercontent.com/pbuttigieg/marmicStats/master/bioenv-1.csv",
-  header = T,
-  sep = "\t"
+  header = T, # we let R know that the first row should be 
+              # understood as a header (i.e. a row of column names)
+  sep = "\t", # we let R know that the column separator is not a
+              # comma, but a tab, represented by "\t"
+  row.names = 1 # we let R know to consider the first column as a
+                # column of row names, rather than a variable
   )
 
-bioenv1 <- read.csv(
-  "bioenv-1.csv",
-  header=T,
-  sep="\t"
-  )
+# Ordinarily, you wouldn't be using a URL, but would give a file path
+# like "C:/Users/myName/My Documents/myFile.csv"
+# but R understands URLs too and can fetch data accordingly.
+# if you want to use a file path instead (e.g. if you have the file
+# on your computer and don't want to / can't download it again)
+# just replace the URL with the file path.
 
-# Inspect the table
-head(bioenv1,20)
+# Inspect the first 20 rows of the table using head()
+head(bioenv1, 20)
+
+# you can also do this with slicing:
+bioenv1[1:20, ] # for a table-like structure such as a data frame or
+                # a matrix, you select rows first, add a comma, and
+                # then select columns. If you leave one slot blank
+                # then all rows/columns are selected, so a blank is
+                # like "no constraint". In our command, we say select
+                # rows from 1 to 20 and all columns.
+
 
 # The row (sample site) where there is no data for species "a" will be removed. 
 # Note: as.numeric over the factor data, gives the codes of the factor levels, 
