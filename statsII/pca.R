@@ -2,9 +2,31 @@
 # be run with an instructor present, but independent development is 
 # encouraged.
 
-require(vegan)
-data(dune)
 
+### load libraries and datasets
+library(vegan)
+library(corrgram)
+data(varespec)
 
-myPca <- rda(dune)
-ordiplot(myPca)
+### inspect the data
+summary(varespec)
+head(varespec)
+dim(varespec)
+corrgram(varespec,lower.panel = panel.shade, upper.panel = NULL, text.panel=panel.txt)
+
+### performe PCA 
+myPca <- rda(varespec, scale=TRUE)
+plot(myPca)
+biplot(myPca, choices = 1:2, scaling=-1)
+biplot(myPca, choices = 1-3, scaling=-1)
+
+### total variance
+sum(myPca$CA$eig)
+barplot(myPca$CA$eig,cex.names = 0.8,las=2)
+
+### variance captured in the first 3 PCs
+(sum(myPca$CA$eig[1:3])/sum(myPca$CA$eig))*100
+
+### variable contributions to the first PC
+barplot(myPca$CA$v[,"PC1"],cex.names=0.8,las=2)
+
