@@ -14,7 +14,7 @@ head(varespec)
 dim(varespec)
 corrgram(varespec,lower.panel = panel.shade, upper.panel = NULL, text.panel=panel.txt)
 
-### performe PCA 
+### perform PCA 
 myPca <- rda(varespec, scale=TRUE)
 plot(myPca)
 biplot(myPca, choices = 1:2, scaling=-1)
