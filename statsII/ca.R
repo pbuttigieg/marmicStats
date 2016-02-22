@@ -1,4 +1,4 @@
-# This script will be a tutorial on using PCA. This tutorial should 
+# This script will be a tutorial on using CA. This tutorial should 
 # be run with an instructor present, but independent development is 
 # encouraged.
 
