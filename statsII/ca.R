@@ -9,11 +9,12 @@ data("varechem")
 ?varespec
 ?varechem
 
-#TODO: plot all of varespec's species along gradients in
-# varechem to see if there are unimodal distributions
 
+# Here, we transform the data using a Hellinger transformation
+# does this improve our data set? Is is appropriate?
 varespec.hel <- decostand(varespec, "hellinger")
 
+matplot(varespec, type = "l",pch=1, col = 1:dim(varespec)[2])
 matplot(varespec.hel, type = "l",pch=1, col = 1:dim(varespec)[2])
 
 myCa <- cca(varespec)
