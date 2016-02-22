@@ -7,9 +7,9 @@ data("varespec")
 data("varechem")
 
 ?varespec
-?varecehm
+?varechem
 
-#TODO: plot all of varespec's species along gradiens in
+#TODO: plot all of varespec's species along gradients in
 # varechem to see if there are unimodal distributions
 
 varespec.hel <- decostand(varespec, "hellinger")

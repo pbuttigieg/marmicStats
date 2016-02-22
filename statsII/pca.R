@@ -9,7 +9,7 @@
 # that is compatible with an older version of R from the pacakge archives.
 # you can use install.packages using a path to tell R where to find your 
 # tar.gz file and setting repos to NULL
-#   install.packages("~/myPackage.tar.gz, repos = NULL)
+#   install.packages("~/myPackage.tar.gz", repos = NULL)
 library(vegan)
 library(corrgram)
 data(varespec)
