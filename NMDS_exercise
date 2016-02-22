@@ -1,0 +1,10 @@
+NMDS exercise
+1) Perform an NMDS analysis using the varespec dataset, based on the Bray-Curtis distance (see ?metaMDS).
+
+2) Plot the results. What can you say about the different sampling sites?
+
+3) Did the algorithm converge?
+
+4) Construct four NMDS varying from 1 to 4 the number of dimensions allowed, and make a plot of the stress values vs the number of dimensions.
+
+5) Perform a Shepard plot. (see ?stressplot).
