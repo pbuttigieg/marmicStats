@@ -1,0 +1,18 @@
+PCA exercise
+
+1) Analyze the distribution and correlation of the variables of the varespec dataset 
+  1.1) What is in varespec?
+  
+2) Perform a PCA with this data
+
+3) Plot the objects and variables in the first and second PCs, and in second and third PC
+  3.1) What information is inside your PCA object?
+  
+4) How much variability is explained by the first three PCs?
+
+5) What is the difference between standardizing and not standardizing the data matrix?
+
+6) Which are the variables that contribute the most to the first PC?
+
+7) After plotting the first 2 PCs what can you say about sampling site 28?
+  7.1) And what about the correlation between variables? (consider type 1 and 2 scaling). 
