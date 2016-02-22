@@ -28,10 +28,10 @@ myCa$CA$tot.chi
 #[1] 1.07848
 
 
-ordiplot(myCa)
+ordiplot(myCa,type="t")
 
 
 myCa <- cca(varespec.hel)
-ordiplot(myCa)
+ordiplot(myCa,type="t")
 
 # What kind of distance is conserved betwen points?
