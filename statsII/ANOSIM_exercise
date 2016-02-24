@@ -1,0 +1,6 @@
+ANOSIM exercise 
+
+1) Perform an ANOSIM test on the groups.table.csv, based on the Bray-Curtis distance.
+2) What do the different R values mean?
+3) How is the statistical significance of the R value computed?
+4) Make bar plot of the ranked dissimilarities within and between groups.
