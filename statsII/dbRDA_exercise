@@ -1,0 +1,8 @@
+dbRDA exercise
+
+1) What is the difference between RDA and db-RDA?
+2) Perform and plot an dbRDS using the trees.csv data set. Use the rankindx function to select an appropriate dissimilarity measures. Examine the data to determine which are the explanatory and response variables.
+3) How much are the constrained and unconstrained variabilities?
+4) Test the significance of the model and the individual variables.
+5) Compute the correlation between the dbRDA first two axes and the explanatory variables.
+  
