@@ -1,0 +1,3 @@
+download: http://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_0.9.1.tar.gz
+
+install.packages(path-to-vegan, repos=NULL, type="source")
