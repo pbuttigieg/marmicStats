@@ -1,0 +1,11 @@
+PCoA exercise
+
+1) Compute a distance matrix for the varespec dataset based on the Bray-Curtis dissimilarity measure.
+
+2) Perform a PCoA on the distance matrix and the plot the first two axes.
+
+3) Inspect the eigenvalues of the PCoA axes. Is there something unexpected?
+
+4) Make an appropriate transformation of the distance matrix, apply PCoA and repeat tasks 1 to 3.
+
+5) What happens if the distance matrix is based on Euclidean distance?

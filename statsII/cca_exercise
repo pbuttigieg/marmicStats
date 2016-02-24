@@ -1,0 +1,8 @@
+CCA exercise
+1) What is the difference between the CCA and RDA?
+2) Perform a CCA on the varespec and varchem datasets (response and explanatory respectively).
+3) Make a triplot (objects, and response and explanatory variables) for the first two canonical axes.
+ 3.1) How much inertia is captured by these axes?
+4) What are the values of the constrained and total inertia? What does this mean? What is inertia in this case (compare it to the inertia reported in your RDA object). 
+5) What is the correlation between the first canonical axes and the explanatory matrix?
+6) Test the significance of the overall solution and for the first two axes.

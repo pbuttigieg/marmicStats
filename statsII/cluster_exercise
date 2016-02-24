@@ -1,0 +1,11 @@
+Cluster exercise
+
+1) Cluster the samples sites from the dune dataset based on the kmeans method (see ?kmeans).
+
+2) Compute a distance matrix based on the Euclidean distances and make a hierarchical clustering using the average linkage and ward's methods (see ?cluster).
+
+3) Plot the previous three clusters.
+
+4) Compare the average and ward clustering methods (see ?cutree and ?table).
+
+5)  Apply a PCA on the data matrix, and use the first three PCs to cluster the sampling sites based on the ward's method. Compare the clustering with the results obtained in part 2).
