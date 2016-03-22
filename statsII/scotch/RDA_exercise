@@ -1,0 +1,11 @@
+RDA exercise
+1) Use varespec and varechem as the tables holding response and explanatory variables respectively. Explore these to be sure you know what's in them and what they are about. Use ? liberally.
+2) Examine the distribution and correlation within and between the variables within and between each matrix (consider using PCA on each).  Are any transformations needed to make them more suitable for RDA?
+3) Perform and plot an RDA (see ?rda). Be sure you understand how to interpret the plot. Check your interpretation against the original data where possible.
+4) What values are reported for the constrained and unconstrained variances?
+ 4.1) What do these values tell you about the RDA
+ 4.2) How are they shared between the RDA and PCA axes? 
+5)  Which variables best explain the response data? Which can be ignored? Are any collinear? If so, remove all but one (which acts as a proxy for the others) to simplify the model.
+6) Perform and RDA using only “N”, “Humdepth”, “S” and “Al” as explanatory variables. 
+6.1) How much did the constrained and unconstrained variance change? What do you conclude from this?
+7) Extract the coordinates of the sites, species, and constraints from the RDA object you created.

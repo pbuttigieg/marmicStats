@@ -1,0 +1,5 @@
+MANOVA and Hotelling's T-squared tests 
+1) What are the differences between MANOVA and ANOVA?
+2) Check if the means from the clay, water and sand samples differ.
+2.1) Make sure the assumptions of the are met.
+3) Apply the Hotelling's T-squared test to determine which samples means are different.
