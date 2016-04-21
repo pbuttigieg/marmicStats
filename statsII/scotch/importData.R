@@ -34,18 +34,3 @@ list2env(
 )
 
 rm(temp)
-
-require(vegan)
-require(pipeR)
-
-pipeline(
- rda(scotchData_pal),
- plot(type = "t")
-)
-
-
-pipeline(
-  rda(scotchData_pal),
-  plot(type = "t")
-)
-
