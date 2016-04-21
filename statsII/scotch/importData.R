@@ -18,7 +18,7 @@
 # Please let us know of the analysis you have performed, especially if you intend on publishing them. 
 
 
-setwd("./scotch/")
+#setwd("./scotch/")
 
 temp = list.files(pattern="*.csv")
 

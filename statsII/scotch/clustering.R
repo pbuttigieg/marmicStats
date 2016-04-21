@@ -16,6 +16,7 @@ plot(noseClust)
 cutree(noseClust, k = 3)
 cutree(noseClust, h = 1.3)
 
+cutree(noseClust, h = 1.3) %>>% sort
 
 # The cophenetic function in stats package generates the cophenetic dissimilarity matrix of an hclust object.
 # The correlation fuction cor can then be used to find out if two dendrograms correlate

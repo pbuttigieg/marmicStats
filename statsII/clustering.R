@@ -2,11 +2,14 @@
 # be run with an instructor present, but independent development is 
 # encouraged.
 
+# see http://cc.oulu.fi/~jarioksa/opetus/metodi/sessio3.pdf for a
+# tutorial by Jari Oksanen
+
 ### load libraries and datasets
 library(vegan)
 library(cluster)
 data(dune)
-
+d
 ### non hierarchical clustering: kmeans
 dune.kc <- kmeans(dune,centers=5)
 class(dune.kc)
@@ -35,3 +38,5 @@ plot(dune.wc)
 plot(dune.wc2)
 
 table(cutree(dune.wc,k=5),cutree(dune.wc2,k=5))
+
+
