@@ -31,7 +31,9 @@ points(xseq,xdt.30,col="blue",type="l")
 xdt.100 <- dt(xseq,df=100)
 points(xseq,xdt.100,col="blue",type="l")
 
-# As the degrees of freedom (or the sample size) of the t-student distribution increases (and the variance decreases), it approximates the standard normal distribution.
+# As the degrees of freedom (or the sample size) of the t-student distribution 
+# increases (and the variance decreases), it approximates the standard normal 
+# distribution.
 
 ############
 #2) 
@@ -45,8 +47,12 @@ set.seed(3)
 binom.1K.50.5 <- rbinom(n=1000,size = 50,prob = 0.5)
 hist(binom.1K.50.5,freq = F)
 
-# The normal distribution can be used to approximate the binomial distribution, by defining the mean as n*p and the variance as n*p*(1-p), where n is the number of trials and p the probability of success. 
-# Do not confuse the number of trials with the sample size, which can also be represented by the letter n.
+# The normal distribution can be used to approximate the binomial distribution,
+# by defining the mean as n*p and the variance as n*p*(1-p), where n is the 
+# number of trials and p the probability of success. 
+
+# Do not confuse the number of trials with the sample size, which can also be 
+# represented by the letter n.
 # Note: the normal distribution is continuous and the binomial is discrete. 
 # Note: the normal distribution can be used as an approximation when n*p > 5 and n*p* (1-p) > 5.
 
@@ -64,9 +70,11 @@ lines(xseq,norm.approx,col="red")
 #3)
 ############
 
-# The lambda parameter of the Poisson distribution is both the expected value and the variance.
+# The lambda parameter of the Poisson distribution is both the expected value
+# and the variance.
 # Note: the normal distribution is continuous and the Poisson is discrete. 
-# Note: the normal distribution can be used as an approximation when lambda is bigger than 10.
+# Note: the normal distribution can be used as an approximation when lambda is 
+# bigger than 10.
 
 # Overlay histograms
 hist(rpois(1000,12),xlim=c(0,30),ylim=c(0,250),col=rgb(0,0,0.5,0.5))
@@ -76,11 +84,19 @@ hist(rnorm(1000,12,sqrt(12)),add=T,col=rgb(0.5,0,0,0.5))
 #4)
 ############
 
-# The following command with the pnorme function, will give us the probability of obtaining a number equal of greater than 1.96: P(x >= 1.96).
-# If the parameter lower.tail equals TRUE, then it will give us the probability of obtaining a number equal or less than 1.96: P(x <= 1.96), or 1 - P(x >= 1.96).
-# The value 1.96 is often used in two tail tests based on the normal distribution, when the critical value alpha is 0.5. See https://en.wikipedia.org/wiki/1.96 
-# Notice that the probability value of the different t-students distributions approaches the probability value of the normal distribution N(0,1), when the degrees of freedom increase.
-# As exercise 1, this comparison illustrates why the t-distribution is commonly substituted by the normal distribution when the sample size is greater than 30.
+# The following command with the pnorme function, will give us the probability 
+# of obtaining a number equal of greater than 1.96: P(x >= 1.96).
+
+# If the parameter lower.tail equals TRUE, then it will give us the probability
+# of obtaining a number equal or less than 1.96: P(x <= 1.96), or 1 - P(x >= 1.96).
+# The value 1.96 is often used in two tail tests based on the normal distribution,
+# when the critical value alpha is 0.5. See https://en.wikipedia.org/wiki/1.96 
+
+# Notice that the probability value of the different t-students distributions 
+# approaches the probability value of the normal distribution N(0,1), when the 
+# degrees of freedom increase.
+# As exercise 1, this comparison illustrates why the t-distribution is commonly 
+# substituted by the normal distribution when the sample size is greater than 30.
 
 pnorm(1.96,0,1,lower.tail=T)
 
@@ -97,12 +113,17 @@ pt(1.96,1000000)
 
 # Make sure to write the path to the folder where bioenv-2 is. 
 # You can use tab to auto complete and check if the path is correct.
+
 bioenv2 <- read.csv("bioenv-2.csv",header=T,sep=",",row.names=1)
+
 # inspect that the table is correct
+
 head(bioenv2)
 
-# Calculate the Pearson (parametric) and Spearman (nonparametric) correlations, and test if these are significant.
-# Remember, it is always important to visualize the variables in a plot, to understand better their relationship.
+# Calculate the Pearson (parametric) and Spearman (nonparametric) correlations,
+# and test if these are significant.
+# Remember, it is always important to visualize the variables in a plot, to 
+# understand better their relationship.
 
 # species a vs temperature
 cor(bioenv2$a,bioenv2$Temperature, method="pearson")
@@ -138,9 +159,12 @@ plot(bioenv2$Temperature,bioenv2$d)
 #6)
 ############
 
-# Notice that the linear regression models the relationship between a dependent variable (species abundances) and an explanatory variable (temperature).
-# The fitted values represent the explained variability of the dependent variable, by the linear model.
-# The residual values represent the unexplained variability of the dependent variable, by the linear model.
+# Notice that the linear regression models the relationship between a dependent
+# variable (species abundances) and an explanatory variable (temperature).
+# The fitted values represent the explained variability of the dependent 
+# variable, by the linear model.
+# The residual values represent the unexplained variability of the dependent 
+# variable, by the linear model.
 
 # divide the figure in a 2 by 2 array
 par(mfrow=c(2,2))
@@ -179,14 +203,18 @@ plot(b_vs_temp.lm)
 plot(c_vs_temp.lm)
 plot(d_vs_temp.lm)
 
-# Species b would be the ideal case, where the residuals are normally and equally distributed along the fitted values.
-# You can find an explanation of these plots in http://www.r-bloggers.com/checking-glm-model-assumptions-in-r/
+# Species b would be the ideal case, where the residuals are normally and 
+# equally distributed along the fitted values.
+# You can find an explanation of these plots in 
+# http://www.r-bloggers.com/checking-glm-model-assumptions-in-r/
 
 ############
 #7)
 ############
 
-# The total variability can be computed as the variability in the fitted values plus the variability in the residual values.
+# The total variability can be computed as the variability in the fitted values
+# plus the variability in the residual values.
+
 # species a vs temperature linear model.
 r.variability <- var(residuals(a_vs_temp.lm))*(150-1)
 f.variability <- var(fitted(a_vs_temp.lm))*(150-1)
