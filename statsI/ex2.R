@@ -72,6 +72,7 @@ lines(xseq,norm.approx,col="red")
 
 # The lambda parameter of the Poisson distribution is both the expected value
 # and the variance.
+
 # Note: the normal distribution is continuous and the Poisson is discrete. 
 # Note: the normal distribution can be used as an approximation when lambda is 
 # bigger than 10.

@@ -9,6 +9,7 @@
 # You can use tab to auto complete and check if the path is correct.
 # You can also use the setwd() function to move to the directory where
 # bioenv3 is.
+
 bioenv3 <- read.csv(
   "bioenv-3.csv",
   header = T,
@@ -128,9 +129,11 @@ pnorm(low.lim,m,s/sqrt(35))
 ###############
 
 # ANOVA: analysis of variance 
-# If there are more than 2 samples, the ANOVA should be performed instead of pairwise t tests.
-# ANOVA will consider all samples at the same time in order to determine if there is a significant difference.
-# If the ANOVA shows a significant p-value, then pairwise t tests or tukesy tests can be performed in order to identify the means that are significantly different.
+# If there are more than 2 samples, the ANOVA should be performed instead of 
+# pairwise t tests. ANOVA will consider all samples at the same time in order 
+# to determine if there is a significant difference. If the ANOVA shows a 
+# significant p-value, then pairwise t tests or tukey tests can be performed 
+# in order to identify the means that are significantly different.
 
 set.seed(1)
 norm.a <- rnorm(50,4,5)
@@ -142,8 +145,11 @@ mydata <- c(norm.a,norm.b,norm.c)
 
 mydata.df <- data.frame(mydata,groups)
 
-# Boxplots are a convenient way of graphically depicting groups of numerical data through their quartiles.
-# The spacings between the different parts of the box indicate the degree of dispersion (spread) and skewness in the data, and show outliers. 
+# Boxplots are a convenient way of graphically depicting groups of numerical 
+# data through their quartiles. The spacings between the different parts of 
+# the box indicate the degree of dispersion (spread) and skewness in the data, 
+# and show outliers. 
+
 plot(mydata ~ groups)
 
 # boxplot example
@@ -169,11 +175,13 @@ summary(a.results)
 # One way to do this is applying pairwise t-test 
 pairwise.t.test(mydata, groups, p.adjust="bonferroni")
 
-# The Bonferroni correction is based on the idea that if an experimenter is testing m hypotheses,
-# then one way of maintaining the family - wise error rate (FWER) is to test each individual hypothesis 
-# at a statistical significance level of 1/m times what it would be if only one hypothesis were tested.
-# So, if the desired significance level for the whole family of tests should be (at most) alpha 
-# then the Bonferroni correction would test each individual hypothesis at a significance level of alpha/m.
+# The Bonferroni correction is based on the idea that if an experimenter is 
+# testing m hypotheses, then one way of maintaining the family - wise error 
+# rate (FWER) is to test each individual hypothesis at a statistical 
+# significance level of 1/m times what it would be if only one hypothesis were
+# tested. So, if the desired significance level for the whole family of tests 
+# should be (at most) alpha then the Bonferroni correction would test each 
+# individual hypothesis at a significance level of alpha/m.
 
 # Other option is applying the function TukeyHSD().
 TukeyHSD(a.results, conf.level=0.95)
@@ -195,24 +203,31 @@ fisher.test(table(bioenv3$Salinity,bioenv3$Biofilm))
 #6)
 ###############
 
-# test by randomization if the difference between two samples differ. 
 
-# generate two different, non normal the samples
+# Test by randomization if the means of two samples differ. 
+
+# First, we generate two samples of size n = 50 from two different Poisson 
+# distributions (Pois(3) and Pois(5)) and store their elements in one vector.
+
 set.seed(1)
 p.comb <- c(rpois(50,3),rpois(50,4))
 
-# create the null hypothesis distribution, which states that there is no difference between the means. 
+# Our null hypothesis is that there is no difference between the means.
+# Let's compute the null hypothesis distribution: 
+
 rand <- vector (mode="numeric",length=10000)
 
-for (i in 1:length(rand)) {
-  tmp <- sample(p.comb) 
-  rand[i] <- mean(tmp[1:50]) - mean(tmp[51:100])
-}
+for (i in 1:length(rand)) {                          # Here we are reordering the vector.
+  tmp <- sample(p.comb)                              # Now the elements of both samples will have random positions in the vector.
+  rand[i] <- mean(tmp[1:50]) - mean(tmp[51:100])     # After the samples are mixed we compute the difference of the means.
+}                                                    # By repeating this several times, we can get an estimation of the null hypothesis distribution.
 
+                                              
+# Plot the null hypothesis distribution
 par(mfrow=c(1,1))
 hist(rand)
 
-# see where the real difference falls under the null hypothesis
+# See where the real difference falls under the null hypothesis
 r.stat <- mean(p.comb[1:50]) - mean(p.comb[51:100])
 r.stat
 sum(rand<=r.stat)/length(rand)
