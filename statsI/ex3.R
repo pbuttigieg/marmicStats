@@ -209,8 +209,7 @@ fisher.test(table(bioenv3$Salinity,bioenv3$Biofilm))
 # First, we generate two samples of size n = 50 from two different Poisson 
 # distributions (Pois(3) and Pois(5)) and store their elements in one vector.
 
-set.seed(1)
-p.comb <- c(rpois(50,3),rpois(50,4))
+p.comb <- c(rpois(40,3),rpois(40,4))
 
 # Our null hypothesis is that there is no difference between the means.
 # Let's compute the null hypothesis distribution: 
@@ -219,7 +218,7 @@ rand <- vector (mode="numeric",length=10000)
 
 for (i in 1:length(rand)) {                          # Here we are reordering the vector.
   tmp <- sample(p.comb)                              # Now the elements of both samples will have random positions in the vector.
-  rand[i] <- mean(tmp[1:50]) - mean(tmp[51:100])     # After the samples are mixed we compute the difference of the means.
+  rand[i] <- mean(tmp[1:40]) - mean(tmp[41:80])     # After the samples are mixed we compute the difference of the means.
 }                                                    # By repeating this several times, we can get an estimation of the null hypothesis distribution.
 
                                               
@@ -227,9 +226,30 @@ for (i in 1:length(rand)) {                          # Here we are reordering th
 par(mfrow=c(1,1))
 hist(rand)
 
-# See where the real difference falls under the null hypothesis
-r.stat <- mean(p.comb[1:50]) - mean(p.comb[51:100])
-r.stat
-sum(rand<=r.stat)/length(rand)
-abline(v=r.stat)
 
+# Let's see how the distribution of H0 and H1 look like 
+mean_diff <- vector (mode="numeric",length=10000)
+
+for ( i in 1:length(mean_diff)) {
+  set.seed(i)
+  p.comb <- c(rpois(40,3),rpois(40,4))
+  mean_diff[i] <- mean(p.comb[1:40]) - mean(p.comb[41:80])
+}
+
+hist(rand,
+     col=rgb(0,0,0.5,0.5), 
+     main="H0 and H1 distributions",
+     xlab = "mean difference",
+     xlim=c(min(mean_diff),max(rand))
+     )
+
+hist(mean_diff, 
+     add=T,
+     col=rgb(0.5,0,0,0.5)
+     )
+
+
+# See where the real difference falls under the null hypothesis
+r.stat <- mean(p.comb[1:40]) - mean(p.comb[41:80])
+r.stat
+abline(v=r.stat,col="red")
