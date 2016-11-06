@@ -53,7 +53,7 @@ MyMode <- function (x) {  # here we specify that the function
   x.round <- round(x,1)  # the first thing we do is to round the
                          # values in x to the tenths position. Note that
                          # you *wouldn't* do this normally, we do it
-                         # here to ensure we get a mean as the numbers
+                         # here to ensure we get a mode as the numbers
                          # in myNorm.01.100 have an overly high precision
                          # so getting two identical numbers is very 
                          # unlikely.
@@ -142,7 +142,7 @@ scale(myNorm.53.100)
 
 
 bioenv1 <- read.csv(
-  "https://raw.githubusercontent.com/pbuttigieg/marmicStats/master/bioenv-1.csv",
+  "https://raw.githubusercontent.com/pbuttigieg/marmicStats/master/statsI/bioenv-1.csv",
   header = T, # we let R know that the first row should be 
               # understood as a header (i.e. a row of column names)
   sep = "\t", # we let R know that the column separator is not a
@@ -151,10 +151,11 @@ bioenv1 <- read.csv(
                 # column of row names, rather than a variable
   )
 
+
 # Ordinarily, you wouldn't be using a URL, but would give a file path
 # like "C:/Users/myName/My Documents/myFile.csv"
 # but R understands URLs too and can fetch data accordingly.
-# if you want to use a file path instead (e.g. if you have the file
+# If you want to use a file path instead (e.g. if you have the file
 # on your computer and don't want to / can't download it again)
 # just replace the URL with the file path. The file can be anywhere
 # as long as you give the full path. If you are working in the same
@@ -249,6 +250,9 @@ range(bioenv1$c)
 
 # visualize the distributions before and after the transformations
 # species "a"
+
+par(mfrow = c(1,3))
+
 hist(bioenv1$a)
 hist(sqrt(bioenv1$a))
 hist(log(bioenv1$a))
@@ -268,9 +272,9 @@ hist(log(bioenv1$c))
 #----------#
 
 # Coefficient of Variation
-sa.cv <- mean(sd(bioenv1$a/bioenv1$a)) 
-sb.cv <- mean(sd(bioenv1$b/bioenv1$b)) 
-sc.cv <- mean(sd(bioenv1$c/bioenv1$c)) 
+sa.cv <- sd(bioenv1$a)/mean(bioenv1$a) 
+sb.cv <- sd(bioenv1$b)/mean(bioenv1$b) 
+sc.cv <- sd(bioenv1$c)/mean(bioenv1$c) 
 
 #----------#
 #7) 

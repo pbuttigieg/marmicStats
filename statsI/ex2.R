@@ -115,7 +115,11 @@ pt(1.96,1000000)
 # Make sure to write the path to the folder where bioenv-2 is. 
 # You can use tab to auto complete and check if the path is correct.
 
-bioenv2 <- read.csv("bioenv-2.csv",header=T,sep=",",row.names=1)
+bioenv2 <- read.csv(
+           "https://raw.githubusercontent.com/pbuttigieg/marmicStats/master/statsI/bioenv-2.csv",
+           header=T,
+           sep=",",
+           row.names=1)
 
 # inspect that the table is correct
 
