@@ -102,8 +102,9 @@ range(myNorm.01.100) # range
 # Create some differnt normal distributions for comparison.
 # Set the seed again to be sure of reproducibility
 set.seed(10)
-
 myNorm.53.100 <- rnorm(100, 5, 3)
+
+set.seed(10)
 myNorm.510.100 <- rnorm(100, 5, 10)
 
 # visualize the differences between the two using
@@ -126,8 +127,8 @@ hist(myNorm.53.100)
 #----------# 
 
 # We can calculate the z-scores of each vector ourselves....
-myNorm.53.100.zscore <- (myNorm.53.100 - mean(myNorm.53.100))/sd(myNorm.53.100)
-myNorm.510.100.zscore <- (myNorm.510.100 - mean(myNorm.510.100))/sd(myNorm.510.100)
+myNorm.53.100.zscore <- (myNorm.53.100 - mean(myNorm.53.100)) / sd(myNorm.53.100)
+myNorm.510.100.zscore <- (myNorm.510.100 - mean(myNorm.510.100)) / sd(myNorm.510.100)
 
 # ... or by using a built in function calculate z-scores 
 # using the scale() function.
@@ -168,7 +169,7 @@ bioenv1 <- read.csv(
 head(bioenv1, 20)
 
 # you can also do this with slicing:
-bioenv1[1:20, ] # for a table-like structure such as a data frame or
+bioenv1[1:20,] # for a table-like structure such as a data frame or
                 # a matrix, you select rows first, add a comma, and
                 # then select columns. If you leave one slot blank
                 # then all rows/columns are selected, so a blank is

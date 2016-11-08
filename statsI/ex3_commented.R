@@ -11,7 +11,7 @@
 # bioenv3 is.
 
 bioenv3 <- read.csv(
-  "bioenv-3.csv",
+  "https://raw.githubusercontent.com/pbuttigieg/marmicStats/master/statsI/bioenv-3.csv",
   header = T,
   row.names = 1
   )
@@ -226,6 +226,11 @@ for (i in 1:length(rand)) {                          # Here we are reordering th
 par(mfrow=c(1,1))
 hist(rand)
 
+r.stat <- mean(p.comb[1:40]) - mean(p.comb[41:80])
+r.stat
+abline(v=r.stat,col="red")
+
+
 
 # Let's see how the distribution of H0 and H1 look like 
 mean_diff <- vector (mode="numeric",length=10000)
@@ -235,6 +240,14 @@ for ( i in 1:length(mean_diff)) {
   p.comb <- c(rpois(40,3),rpois(40,4))
   mean_diff[i] <- mean(p.comb[1:40]) - mean(p.comb[41:80])
 }
+
+
+
+
+
+
+hist(mean_diff)
+
 
 hist(rand,
      col=rgb(0,0,0.5,0.5), 
