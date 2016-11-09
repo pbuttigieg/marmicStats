@@ -154,8 +154,8 @@ plot(mydata ~ groups)
 
 # boxplot example
 par(mfrow=c(2,1),mar=c(1,1,1,1))
-boxplot(mynorm.1,horizontal = T)
-hist(mynorm.1)
+boxplot(norm.a,horizontal = T)
+hist(norm.a)
 
 # test homogeneity of variance (assumption of the ANOVA)
 bartlett.test(mydata,groups) # the null hypothesis is that the variances are homogeneous
