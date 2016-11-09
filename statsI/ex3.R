@@ -39,9 +39,9 @@ abline(v = t.stat)
 
 # do the test using a existing function from R 
 t.test(
-  bioenv3$a,               
+  x= bioenv3$a,               
   mu = 10,                  
-  alternative = "greater"   
+  alternative = "greater"    
 )
 
 ############
@@ -85,7 +85,7 @@ install.packages("pwr")
 library("pwr")
 
 # test 1.1)
-pwr.t.test(n = 25, d=0.4, sig.level = 0.05 ,type="one.sample")
+pwr.t.test(n = 25, d=0.4, sig.level = 0.05, power = NULL ,type="one.sample")
 
 ############
 #3)
@@ -99,7 +99,7 @@ mynorm.35.3.5 <- rnorm(35,3,5)
 m <- mean(mynorm.35.3.5)
 s <- sd(mynorm.35.3.5)
 
-s.error = qnorm(0.975)*(s/sqrt(35))
+s.error = qnorm(0.975,0,1)*(s/sqrt(35))
 
 up.lim <- m + s.error
 low.lim <- m - s.error
@@ -133,13 +133,12 @@ mydata <- c(norm.a,norm.b,norm.c)
 mydata.df <- data.frame(mydata,groups)
 
 
-
 plot(mydata ~ groups)
 
 # boxplot example
 par(mfrow=c(2,1),mar=c(1,1,1,1))
-boxplot(mynorm.1,horizontal = T)
-hist(mynorm.1)
+boxplot(norm.a,horizontal = T)
+hist(norm.a)
 
 # test homogeneity of variance (assumption of the ANOVA)
 bartlett.test(mydata,groups) # the null hypothesis is that the variances are homogeneous
