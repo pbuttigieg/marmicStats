@@ -41,7 +41,7 @@ plot(myPca)
 # check out ?biplot to understand the arguments
 # not all packages treat scaling in the same way!
 biplot(myPca, choices = 1:2, scaling=-1)
-biplot(myPca, choices = 1:3, scaling=-1)
+biplot(myPca, choices = c(1,3), scaling=-1)
 
 ### total variance
 # We're going into the PCA object created by vegan using the "$" operator
