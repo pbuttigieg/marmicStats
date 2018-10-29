@@ -4,7 +4,7 @@
 Name | GitHub handle | ORCID
 ---|---|---
 Pier Luigi Buttigieg (IoR) | @pbuttigieg | [ORCID](https://orcid.org/0000-0002-4366-3088)
-Emiliano Pereira | @pereiramemo | [ORCID]()
+Emiliano Pereira | @pereiramemo | [ORCID](https://orcid.org/0000-0001-5830-3328)
 Matthew Schechter | @mschecht | [ORCID](https://orcid.org/0000-0002-8435-3203)
 
 ### Description
