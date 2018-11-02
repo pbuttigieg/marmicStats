@@ -9,7 +9,7 @@
 library(vegan)
 library(cluster)
 data(dune)
-d
+
 ### non hierarchical clustering: kmeans
 dune.kc <- kmeans(dune,centers=5)
 class(dune.kc)
