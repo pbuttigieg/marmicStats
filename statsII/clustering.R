@@ -27,7 +27,7 @@ dune.cc <- hclust(dune.eu.dist,method = "complete")
 plot(dune.wc)
 plot(dune.cc)
 
-table(cutree(dune.wc,k=5),cutree(dune.cc,k=5))
+rbind(cutree(dune.wc,k=5),cutree(dune.cc,k=5))
 
 ### hierarchical clustering based on PCoA first 2 axes
 myPca <- rda(dune,scale=TRUE)
