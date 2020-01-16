@@ -8,6 +8,7 @@
 ### load libraries and datasets
 library(vegan)
 library(cluster)
+require(tidyverse)
 data(dune)
 
 ### non hierarchical clustering: kmeans
@@ -15,8 +16,17 @@ dune.kc <- kmeans(dune,centers=5)
 class(dune.kc)
 dune.kc$cluster
 
+#test significance of clustering
+#use as.factor for vector of clusters otherwise it may be interpreted as ordered
+anosim(dune, #data fram of response variables
+       as.factor(dune.kc$cluster)) #factor for grouping
+adonis(dune ~ as.factor(dune.kc$cluster)) #adonis is PERMANOVA
+
+rda(dune ~ as.factor(dune.kc$cluster)) %>% plot
+
 dune.eu.dist <- dist(dune,method = "euclidean")
 clusplot(x=dune.eu.dist,diss=TRUE,clus = dune.kc$cluste,lines=0,labels = 2)
+
 
 
 ### hierarchical clustering 
