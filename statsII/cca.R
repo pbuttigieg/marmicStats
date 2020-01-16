@@ -5,6 +5,7 @@
 
 ### load libraries and datasets
 require(vegan)
+library(corrgram)
 data("varespec")
 data("varechem")
 
@@ -24,6 +25,12 @@ myCca$CA$tot.chi
 
 ### inertia captured in the CCA axes
 screeplot(myCca)
+
+### explore correlation between CCA axis and explanatory variables. 
+CCA1 <- myCca$CCA$u[,"CCA1"]
+corrgram(cbind(CCA1, varechem), lower.panel = panel.shade, upper.panel = NULL, text.panel = panel.txt)
+CCA2 <-myCca$CCA$u[,"CCA2"]
+corrgram(cbind(CCA2, varechem), lower.panel = panel.shade, upper.panel = NULL, text.panel = panel.txt)
 
 ### proportion of constrainded inertia captured captured 
 ### in the first two CCA axes
