@@ -6,6 +6,7 @@ Name | GitHub handle | ORCID
 Pier Luigi Buttigieg (IoR) | @pbuttigieg | [ORCID](https://orcid.org/0000-0002-4366-3088)
 Emiliano Pereira | @pereiramemo | [ORCID](https://orcid.org/0000-0001-5830-3328)
 Matthew Schechter | @mschecht | [ORCID](https://orcid.org/0000-0002-8435-3203)
+Raïssa Meyer | @raissameyer | [ORCID](https://orcid.org/0000-0002-2996-719X)
 
 ### Description
 Welcome to the Statistics I code repository for the IMPRS Marine Microbiology MarMic programme. Here, you will find R code used in our practical sessions to reinforce the content of the morning lectures. While some exercises are provided, these are meant more as a guideline for some self-directed practice: students are encouraged to play around with the functions and parameters to gain a hands-on understanding of some of the key points in the lecture material.
