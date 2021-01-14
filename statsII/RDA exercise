@@ -1,0 +1,16 @@
+RDA exercise
+
+1. What dataset are you looking at?
+1.2. Which contains the response variables and which the explanatory variables?
+
+2. Perform an RDA on the dune and dune.env datasets
+
+3. Explore what information is stored in your RDA object
+3. 1. What is inertia in the RDA sense?
+
+4. Examine the residuals of the RDA. If necessary perform an appropriate transformation on the input dataset
+
+5. Make a triplot (objects, and response and explanatory variables)
+
+6. Test the significance of the RDA solution
+ 
