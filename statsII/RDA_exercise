@@ -1,7 +1,7 @@
 RDA exercise
 
 1. What datasets are you looking at?
-1.2. Which contains the response variables and which the explanatory variables?
+1.2. What are your objects, response variables and explanatory variables?
 
 2. Perform an RDA on the dune and dune.env datasets
 
