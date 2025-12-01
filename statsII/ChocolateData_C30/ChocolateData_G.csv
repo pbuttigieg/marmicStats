@@ -1,0 +1,25 @@
+Scent
+Sample,Spicy,Roasted,Earthy,Floral,Vegetal,Fruity,Nutty,Notes
+Bar 1,0,1,1,2,3,3,0,
+Bar 2,0,1,2,2,2,0,0,
+Bar 3,0,1,1,0,1,0,1,
+Bar 4,0,2,1,1,0,2,1,
+Bar 5,0,1,0,0,0,1,3,
+Bar 6,0,2,1,1,2,1,0,
+Bar 7,0,2,1,1,1,3,3,
+Bar 8,0,2,0,0,0,1,0,
+Bar 9,0,1,2,1,1,1,2,
+Bar 10,0,1,0,0,1,1,0,
+
+Taste
+Sample,Spicy,Roasted,Earthy,Floral,Vegetal,Fruity,Nutty,Notes
+Bar 1,1,5,4,0,1,0,2,
+Bar 2,0,2,2,1,3,1,1,
+Bar 3,0,1,2,1,0,1,2,
+Bar 4,2,3,2,3,1,3,0,
+Bar 5,0,1,1,4,2,4,3,Tasty!
+Bar 6,0,1,1,3,1,4,2,TASTY!
+Bar 7,1,4,3,0,2,0,2,
+Bar 8,0,2,1,3,2,4,2,Tasty!
+Bar 9,0,2,1,0,1,0,2,
+Bar 10,0,3,2,0,1,0,2,

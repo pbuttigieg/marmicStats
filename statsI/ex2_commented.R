@@ -19,24 +19,23 @@ points(xseq,xdt.2,col="blue",type="l")
 xdt.5 <- dt(xseq,df=5)
 points(xseq,xdt.5,col="blue",type="l")
 
-# add the density function of T(5) in the plot
+# add the density function of T(10) in the plot
 xdt.10 <- dt(xseq,df=10)
 points(xseq,xdt.10,col="blue",type="l")
 
-# add the density function of T(5) in the plot
+# add the density function of T(30) in the plot
 xdt.30 <- dt(xseq,df=30)
 points(xseq,xdt.30,col="blue",type="l")
-
-# add the density function of T(5) in the plot
+# add the density function of T(100) in the plot
 xdt.100 <- dt(xseq,df=100)
 points(xseq,xdt.100,col="blue",type="l")
 
-# As the degrees of freedom (or the sample size) of the t-student distribution 
-# increases (and the variance decreases), it approximates the standard normal 
+# As the degrees of freedom (or the sample size) of the t-student distribution
+# increases (and the variance decreases), it approximates the standard normal
 # distribution.
 
 ############
-#2) 
+#2)
 ############
 
 set.seed(3)
@@ -48,13 +47,13 @@ binom.1K.50.5 <- rbinom(n=1000,size = 50,prob = 0.5)
 hist(binom.1K.50.5,freq = F)
 
 # The normal distribution can be used to approximate the binomial distribution,
-# by defining the mean as n*p and the variance as n*p*(1-p), where n is the 
-# number of trials and p the probability of success. 
+# by defining the mean as n*p and the variance as n*p*(1-p), where n is the
+# number of trials and p the probability of success.
 
-# Do not confuse the number of trials with the sample size, which can also be 
+# Do not confuse the number of trials with the sample size, which can also be
 # represented by the letter n.
 
-# Note: the normal distribution is continuous and the binomial is discrete. 
+# Note: the normal distribution is continuous and the binomial is discrete.
 # Note: as a rule of thumb, the normal distribution can be used to approximate
 # the binomial distribution  when n*p > 5 and n*p* (1-p) > 5.
 
@@ -75,7 +74,7 @@ lines(xseq,norm.approx,col="red")
 # The lambda parameter of the Poisson distribution is both the expected value
 # and the variance.
 
-# Note: the normal distribution is continuous and the Poisson is discrete. 
+# Note: the normal distribution is continuous and the Poisson is discrete.
 # Note: the normal distribution can be used as an approximation when lambda is greater than 10.
 
 # Overlay histograms
@@ -87,21 +86,21 @@ hist(rnorm(1000,12,sqrt(12)),add=T,col=rgb(0.5,0,0,0.5))
 ############
 
 
-# The following command using the pnorm function will give us the probability 
-# of obtaining a number equal or greater than 1.96 ( P(x >= 1.96) ), from a 
+# The following command using the pnorm function will give us the probability
+# of obtaining a number equal or greater than 1.96 ( P(x >= 1.96) ), from a
 # standard normal distribution.
 
-# If the parameter lower.tail equals TRUE, then pnorm will return the probability 
+# If the parameter lower.tail equals TRUE, then pnorm will return the probability
 # of obtaining a number equal or less than 1.96 ( P(x <= 1.96), or 1 - P(x >= 1.96) ).
 
-# 1.96 is the approximate value of the 97.5 percentile point of the normal 
-# distribution and is often used in z-tests. See https://en.wikipedia.org/wiki/1.96 
+# 1.96 is the approximate value of the 97.5 percentile point of the normal
+# distribution and is often used in z-tests. See https://en.wikipedia.org/wiki/1.96
 
-# Notice that the probability value of the different t-students distributions 
-# approaches the probability value of the normal distribution N(0,1), when the 
+# Notice that the probability value of the different t-students distributions
+# approaches the probability value of the normal distribution N(0,1), when the
 # degrees of freedom increase.
 
-# As in exercise 1, this comparison illustrates why the t-distribution is commonly 
+# As in exercise 1, this comparison illustrates why the t-distribution is commonly
 # substituted by the standard normal distribution when the sample size is greater than 30.
 
 pnorm(1.96,0,1,lower.tail=T)
@@ -132,7 +131,7 @@ head(bioenv2)
 # Calculate the Pearson (parametric) and Spearman (nonparametric) correlations,
 # and test their significance.
 
-# Remember, it is always important to visualize the variables in a plot in order 
+# Remember, it is always important to visualize the variables in a plot in order
 # to have a better understanding of how they relate.
 
 # species a vs temperature
@@ -178,9 +177,9 @@ plot(bioenv2$Temperature,bioenv2$d)
 
 # Notice that the linear regression models the relationship between a dependent
 # variable (species abundances) and an explanatory variable (temperature).
-# The fitted values represent the explained variability of the dependent 
+# The fitted values represent the explained variability of the dependent
 # variable by the linear model.
-# The residual values represent the unexplained variability of the dependent 
+# The residual values represent the unexplained variability of the dependent
 # variable by the linear model.
 
 # divide the figure in a two by two array
@@ -214,16 +213,16 @@ summary(b_vs_temp.lm)
 summary(c_vs_temp.lm)
 summary(d_vs_temp.lm)
 
-# To analyze the linear regression assumptions you can directly plot the linear models. 
+# To analyze the linear regression assumptions you can directly plot the linear models.
 plot(a_vs_temp.lm)
 plot(b_vs_temp.lm)
 plot(c_vs_temp.lm)
 plot(d_vs_temp.lm)
 
-# Species b would be the ideal case, where the residuals are normally and 
+# Species b would be the ideal case, where the residuals are normally and
 # equally distributed along the fitted values.
 
-# You can find an explanation of these plots in 
+# You can find an explanation of these plots in
 # http://www.r-bloggers.com/checking-glm-model-assumptions-in-r/
 
 ############
@@ -244,5 +243,3 @@ r.variability + f.variability
 # compute the coefficient of determination (r^2)
 # you can find this value in the linear model using the function summary.
 f.variability/(r.variability + f.variability)
-
-
