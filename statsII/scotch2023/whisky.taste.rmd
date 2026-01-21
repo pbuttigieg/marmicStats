@@ -1,0 +1,100 @@
+---
+title: "Grace Ho's Whisky Tasting"
+author: "Grace GY Ho"
+date: "February 27, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+require(ggplot2)
+require(vegan)
+require(reshape2)
+```
+
+First import the data.
+
+```{r import}
+dat<-read.csv("scotch/whisky_gho.csv",header=T)
+dat
+#columns in dat are called
+names(dat)
+#create the taste matrix
+taste<-dat[,1:24]
+taste.melt<-melt(taste)
+taste
+
+#Here is a separate data structure for use in ordination plots and distances calculations. The subject column is simply converted to the row names.
+taste.mat<-taste[,2:24]
+taste.mat
+taste.mat <- lapply(taste.mat, as.numeric)
+taste.mat <-as.data.frame(taste.mat)
+rownames(taste.mat)<- taste$Subject
+
+```
+
+## Basic questions about the data
+<ol>
+<li> What are the top tasted notes?</li>
+<li> What are the whiskies with the most flavours?</li>
+</ol>
+
+But first, let's look at a summary of the taste profiles with a bargraph.
+```{r barplot}
+ggplot(taste.melt,aes(variable,value))+geom_bar(stat="identity", aes(fill=variable))+facet_grid(Subject~.)+ theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.4))+ylim(c(0,5))
+```
+
+Here are the top tasted notes:
+
+```{r top-notes}
+#sum the scores of each note
+#sort
+notes.sorted<-as.data.frame(sort(colSums(taste.mat),decreasing = T))
+#plot
+sum.tastes<-notes.sorted
+sum.tastes<-data.frame(Taste=as.data.frame(rownames(sum.tastes)),sum=sum.tastes)
+names(sum.tastes) <- c("Taste","Sum")
+sum.tastes
+ggplot(sum.tastes,aes(reorder(Taste, -Sum),Sum))+geom_bar(stat="identity")+ 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.4))+ggtitle(label = "Sum of the scores for each note")
+```
+
+## Comparison of Whiskies
+
+#PCA of whiskies
+```{r PCA}
+taste.pca<-rda(taste.mat)
+ordiplot(taste.pca,type = "text",cex=0.5)
+biplot(taste.pca, scaling=1)
+```
+
+
+#PCoA of whiskies
+```{r PCoA}
+taste.dist<-vegdist(taste.mat)
+taste.euc<-dist(taste.mat)
+taste.pcoa<-cmdscale(sqrt(taste.dist), k=2,eig=TRUE) #sqrt required, eigen values negative otherwise.
+barplot(taste.pcoa$eig)
+taste.pcoa.euc<-cmdscale(sqrt(taste.euc),k=2,eig=TRUE)
+ordiplot(taste.pcoa,type = "text")
+ordiplot(taste.pcoa.euc, type="text")
+```
+
+#NMDS of whiskies
+```{r PCoA}
+taste.nmds<-metaMDS(taste.dist) #sqrt required, eigen values negative otherwise.
+
+ordiplot(taste.nmds,type = "text")
+```
+
+#Hierarchical clustering
+```{r HCA}
+taste.hca.wd2<-hclust(taste.dist,method = "ward.D2")
+taste.hca.upgma<-hclust(taste.dist,method = "average")
+taste.hca.centroid<-hclust(taste.dist,method = "centroid")
+
+
+plot(taste.hca.wd2)
+plot(taste.hca.upgma)
+plot(taste.hca.centroid)
+
+```
